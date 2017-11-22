@@ -12,7 +12,7 @@ import { LoginPage } from '../pages/login/login';
 })
 export class MyApp {
   @ViewChild(Nav) public nav: Nav;
-  
+
   rootPage:any = LoginPage;
 
 
@@ -31,9 +31,8 @@ export class MyApp {
   }
 
   abrePagina(componente): void {
-    console.log(componente);
     this.nav.push(componente);
-    
+
   }
 
 }
