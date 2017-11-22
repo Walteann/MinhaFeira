@@ -1,0 +1,44 @@
+import { Component, OnInit } from '@angular/core';
+import { NavController } from 'ionic-angular';
+
+
+import { ListaProdutosComponent } from '../listaProdutos/lista-produtos.component';
+import { HistoricoPage } from '../historico/historico';
+
+@Component({
+	selector: 'page-home',
+	templateUrl: 'home.html'
+})
+export class HomePage implements OnInit {
+
+
+	public menu_inicial = [];
+	public menuR: string;
+
+
+	constructor(public navCtrl: NavController) {
+
+		this.menu_inicial = [
+			{ componenteMenu: ListaProdutosComponent, nomeMenu: 'Nova Compra', descricaoMenu: 'Vamos a Feira', iconeIos: 'ios-cart', iconeMd: 'md-cart' },
+			{ componenteMenu: ListaProdutosComponent, nomeMenu: 'Adicionar produtos', descricaoMenu: 'Adicione produtos a lista', iconeIos: 'ios-folder', iconeMd: 'md-folder' },
+			{ componenteMenu: HistoricoPage, nomeMenu: 'Historico de Compras', descricaoMenu: 'Veja as antigas compras', iconeIos: 'ios-paper', iconeMd: 'md-paper' }
+		];
+
+	}
+
+
+	ngOnInit() {
+
+	}
+
+	menuSelecionado(componenteR): void {
+		
+		this.navCtrl.push(componenteR);
+
+	}
+
+}
+
+
+
+
