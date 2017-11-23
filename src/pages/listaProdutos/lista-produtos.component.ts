@@ -32,8 +32,7 @@ export class ListaProdutosComponent implements OnInit{
             console.log(this.merc);
 
         });
-        
-        console.log(this.merc);
+            
         
     }
     

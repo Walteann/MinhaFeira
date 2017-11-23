@@ -13,6 +13,8 @@ import 'rxjs/add/operator/toPromise';
 
 
 
+import { AmbienteComprasPage } from '../pages/ambiente-compras/ambiente-compras';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
@@ -29,6 +31,7 @@ import { ListagemProdutosServiceProvider } from '../providers/listagem-produtos-
     ListaProdutosComponent,
     HistoricoPage,
     LoginPage,
+    AmbienteComprasPage
   
 
   ],
@@ -43,7 +46,8 @@ import { ListagemProdutosServiceProvider } from '../providers/listagem-produtos-
     HomePage,
     ListaProdutosComponent,
     HistoricoPage,
-    LoginPage
+    LoginPage,
+    AmbienteComprasPage
 
   ],
   providers: [
