@@ -11,7 +11,8 @@ export class AmbienteComprasPage implements OnInit {
 
 	public listaDeMercadorias: ListaMercadoriaModels[];
 
-	public precoTotal;
+    public precoTotal;
+    public Total: number;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams,
 
@@ -19,16 +20,16 @@ export class AmbienteComprasPage implements OnInit {
 
 
 		}
-		
+
 		ionViewDidLoad() {
 			console.log('ionViewDidLoad AmbienteComprasPage');
 		}
-		
-		
-		
+
+
+
 		ngOnInit() {
 			this.listaDeMercadorias = [
-	
+
 				// {
 				// 	mercadoria: 'Feijao',
 				// 	qtd: 2,
@@ -45,8 +46,9 @@ export class AmbienteComprasPage implements OnInit {
 				// 	precoUni: 1.25
 				// },
 			];
-	
-			this.precoTotal = 0.0;
+
+            this.precoTotal = 0.0;
+            this.Total = 0.0;
 		this.realizaCalculo();
 	}
 
@@ -104,11 +106,9 @@ export class AmbienteComprasPage implements OnInit {
 	realizaCalculo() {
 
 		for (let i = 0; i < this.listaDeMercadorias.length; i++) {
-
-
 			this.precoTotal += (this.listaDeMercadorias[i].precoUni * this.listaDeMercadorias[i].qtd);
 		}
-		console.log(this.precoTotal);
+		this.Total = this.precoTotal.toFixed(2);
 	}
 
 }

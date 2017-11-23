@@ -1,7 +1,7 @@
 <ion-header>
 
 	<ion-navbar>
-		<ion-title>ambienteCompras</ion-title>
+		<ion-title>Ambiente de Compras</ion-title>
 	</ion-navbar>
 
 </ion-header>
@@ -13,7 +13,7 @@
 		<ion-item-divider>
 
 			Total
-			<h1>R$: {{precoTotal}}</h1>
+			<h1>R$: {{Total}}</h1>
 			<ion-fab right top>
 				<button ion-fab mini (click)="addProduto()">
 					<ion-icon name="add"></ion-icon>
@@ -23,10 +23,20 @@
 
 		</ion-item-divider>
 
+        <ion-grid>
+            <ion-row text-center>
+                <ion-col col-6 >Produtos</ion-col>
+                <ion-col col-2 >Qtd</ion-col>
+                <ion-col col-3 >Preço</ion-col>
+            </ion-row>
 
-		<ion-item *ngFor="let lista of listaDeMercadorias">
-			{{lista.mercadoria}} - {{lista.qtd}} - {{lista.precoUni}}
-		</ion-item>
+            <ion-row *ngFor="let lista of listaDeMercadorias">
+                    <ion-col col-7>{{lista.mercadoria}}</ion-col>
+                    <ion-col col-1>{{lista.qtd}}</ion-col>
+                    <ion-col col-4>R$ {{lista.precoUni}}</ion-col>
+            </ion-row>
+
+        </ion-grid>
 
 	</ion-item-group>
 </ion-card>
