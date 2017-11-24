@@ -1,75 +1,75 @@
 <ion-header>
 
-	<ion-navbar>
-		<ion-title>Ambiente de Compras</ion-title>
-	</ion-navbar>
+    <ion-navbar>
+        <ion-title>Ambiente de Compras</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<!-- <ion-card> -->
-		<ion-item-group>
-			<ion-item-divider>
+    <!-- <ion-card> -->
+    <ion-item-group>
+        <ion-item-divider>
 
-				Total
-				<h1>R$: {{Total}}</h1>
-				<ion-fab right top>
-					<button ion-fab mini (click)="addProduto()">
-						<ion-icon name="add"></ion-icon>
-					</button>
-				</ion-fab>
+            Total
+            <h1>R$: {{Total}}</h1>
+            <ion-fab right top>
+                <button ion-fab mini (click)="addProduto()">
+                    <ion-icon name="add"></ion-icon>
+                </button>
+            </ion-fab>
 
 
-			</ion-item-divider>
-			
-		</ion-item-group>
-			<ion-grid>
-				<ion-row text-center>
+        </ion-item-divider>
 
-					<ion-item>
-						
-											<ion-label text-start>Qtd</ion-label>
-											<ion-label text-center>Produtos</ion-label>
-											<ion-label text-end>Preço</ion-label>
-					</ion-item>
-				</ion-row>
-			</ion-grid>
+    </ion-item-group>
+    <ion-grid>
+        <ion-row text-center>
 
-			
-			<ion-list>
-				<ion-row class="test">
-					<ion-item-sliding *ngFor="let lista of listaDeMercadorias">
-						<ion-item col-12>
+            <ion-item>
 
-							<ion-label text-start>{{lista.qtd}}</ion-label>
-							<ion-label text-center>{{lista.mercadoria}}</ion-label>
-							<ion-label text-end>R$ {{lista.precoUni}}</ion-label>
-							
-						</ion-item>
-						
-						<ion-item-options side="left">
-							<button ion-button color="primary">
-								<ion-icon name="build"></ion-icon>
-								Editar
-							</button>
-							
-						</ion-item-options>
-						<ion-item-options side="right">
-							<button ion-button color="danger">
-								<ion-icon name="trash"></ion-icon>
-								Apagar
-							</button>
-						</ion-item-options>
-						
-						
-					</ion-item-sliding>
-					
-					
-				</ion-row>
-					
-				</ion-list>
+                <ion-label text-start>Qtd</ion-label>
+                <ion-label text-center>Produtos</ion-label>
+                <ion-label text-end>Preço</ion-label>
+            </ion-item>
+        </ion-row>
+    </ion-grid>
 
-	<!-- </ion-card> -->
+
+    <ion-list>
+        <ion-row class="test">
+            <ion-item-sliding *ngFor="let lista of listaDeMercadorias" #itemSli>
+                <ion-item col-12>
+
+                    <ion-label text-start>{{lista.qtd}}</ion-label>
+                    <ion-label text-center>{{lista.mercadoria}}</ion-label>
+                    <ion-label text-end>R$ {{lista.precoUni}}</ion-label>
+
+                </ion-item>
+
+                <ion-item-options side="left">
+                    <button ion-button color="primary"  (click)="atualizarProduto(lista, itemSli)">
+                        <ion-icon name="build"></ion-icon>
+                        Editar
+                    </button>
+
+                </ion-item-options>
+                <ion-item-options side="right">
+                    <button ion-button color="danger" (click)="removerProduto(lista, itemSli)">
+                        <ion-icon name="trash"></ion-icon>
+                        Apagar
+                    </button>
+                </ion-item-options>
+
+
+            </ion-item-sliding>
+
+
+        </ion-row>
+
+    </ion-list>
+
+    <!-- </ion-card> -->
 
 </ion-content>
