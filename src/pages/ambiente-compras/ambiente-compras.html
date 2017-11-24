@@ -8,37 +8,68 @@
 
 
 <ion-content padding>
-<ion-card>
-	<ion-item-group>
-		<ion-item-divider>
+	<!-- <ion-card> -->
+		<ion-item-group>
+			<ion-item-divider>
 
-			Total
-			<h1>R$: {{Total}}</h1>
-			<ion-fab right top>
-				<button ion-fab mini (click)="addProduto()">
-					<ion-icon name="add"></ion-icon>
-				</button>
-			</ion-fab>
+				Total
+				<h1>R$: {{Total}}</h1>
+				<ion-fab right top>
+					<button ion-fab mini (click)="addProduto()">
+						<ion-icon name="add"></ion-icon>
+					</button>
+				</ion-fab>
 
 
-		</ion-item-divider>
+			</ion-item-divider>
+			
+		</ion-item-group>
+			<ion-grid>
+				<ion-row text-center>
 
-        <ion-grid>
-            <ion-row text-center>
-                <ion-col col-6 >Produtos</ion-col>
-                <ion-col col-2 >Qtd</ion-col>
-                <ion-col col-3 >Preço</ion-col>
-            </ion-row>
+					<ion-item>
+						
+											<ion-label text-start>Qtd</ion-label>
+											<ion-label text-center>Produtos</ion-label>
+											<ion-label text-end>Preço</ion-label>
+					</ion-item>
+				</ion-row>
+			</ion-grid>
 
-            <ion-row *ngFor="let lista of listaDeMercadorias">
-                    <ion-col col-7>{{lista.mercadoria}}</ion-col>
-                    <ion-col col-1>{{lista.qtd}}</ion-col>
-                    <ion-col col-4>R$ {{lista.precoUni}}</ion-col>
-            </ion-row>
+			
+			<ion-list>
+				<ion-row class="test">
+					<ion-item-sliding *ngFor="let lista of listaDeMercadorias">
+						<ion-item col-12>
 
-        </ion-grid>
+							<ion-label text-start>{{lista.qtd}}</ion-label>
+							<ion-label text-center>{{lista.mercadoria}}</ion-label>
+							<ion-label text-end>R$ {{lista.precoUni}}</ion-label>
+							
+						</ion-item>
+						
+						<ion-item-options side="left">
+							<button ion-button color="primary">
+								<ion-icon name="build"></ion-icon>
+								Editar
+							</button>
+							
+						</ion-item-options>
+						<ion-item-options side="right">
+							<button ion-button color="danger">
+								<ion-icon name="trash"></ion-icon>
+								Apagar
+							</button>
+						</ion-item-options>
+						
+						
+					</ion-item-sliding>
+					
+					
+				</ion-row>
+					
+				</ion-list>
 
-	</ion-item-group>
-</ion-card>
+	<!-- </ion-card> -->
 
 </ion-content>
