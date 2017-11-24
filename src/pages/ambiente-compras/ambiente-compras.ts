@@ -1,6 +1,18 @@
+import { HistoricoAddModels } from './../../modals/historico-add.models';
 import { Component, OnInit } from "@angular/core";
-import { NavController, NavParams, AlertController, ItemSliding } from "ionic-angular";
+import {
+    NavController,
+    NavParams,
+    AlertController,
+    ItemSliding
+} from "ionic-angular";
 import { ListaMercadoriaModels } from "../../modals/lista-mercadoria.models";
+import { IHistoricoComprasModels } from './../../modals/historico-compras.models';
+
+import { ComprasHistoricoServiceProvider } from './../../providers/compras-historico-service/compras-historico-service';
+
+
+
 
 @Component({
   selector: "page-ambiente-compras",
@@ -12,10 +24,14 @@ export class AmbienteComprasPage implements OnInit {
   public precoTotal;
   public Total: number;
 
+  public historicoCompra: IHistoricoComprasModels[];
+
+
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private _alertCtrl: AlertController
+      public navCtrl: NavController,
+      public navParams: NavParams,
+      private _alertCtrl: AlertController,
+      private _historicoComprasService: ComprasHistoricoServiceProvider
   ) {}
 
   ionViewDidLoad() {
@@ -90,23 +106,22 @@ export class AmbienteComprasPage implements OnInit {
 
   alertDeletar(produto, itemSli) {
     var alert = this._alertCtrl.create({
-        title: "Remover Produto",
-        message: "Tem certeza que deseja remover " +produto.mercadoria+ " ?",
-        buttons: [
-            {
-                text: 'Não',
-                handler: () => {
-                    itemSli.close();
-                }
-            },
-            {
-                text: 'Sim',
-                handler: () =>  {
-                    this.removeuP(produto);
-
-                }
-            }
-        ]
+      title: "Remover Produto",
+      message: "Tem certeza que deseja remover " + produto.mercadoria + " ?",
+      buttons: [
+        {
+          text: "Não",
+          handler: () => {
+            itemSli.close();
+          }
+        },
+        {
+          text: "Sim",
+          handler: () => {
+            this.removeuP(produto);
+          }
+        }
+      ]
     });
     alert.present();
   }
@@ -162,6 +177,36 @@ export class AmbienteComprasPage implements OnInit {
     alert.present();
   }
 
+  alertProdutoFinalizado(listaDeProdutos) {
+    var alert = this._alertCtrl.create({
+      title: "Finalizar compras",
+      message:
+        "Já Passou no caixa?!! verificou o valor??. pressione Sim para salvar ",
+       inputs: [
+           {
+
+               name: 'nomeacao',
+               type: 'text',
+               placeholder: 'Dê um nome a essa feira'
+           }
+       ],
+      buttons: [
+        {
+          text: "NÃO",
+          handler: () => {
+
+          }
+        },
+        {
+          text: "SIM",
+          handler: data => {
+              this.salvarCompras(listaDeProdutos, data.nomeacao);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 
   addProduto() {
     this.alertProduto();
@@ -172,14 +217,12 @@ export class AmbienteComprasPage implements OnInit {
   }
 
   removeuP(produto) {
-        this.listaDeMercadorias.splice(this.listaDeMercadorias.indexOf(produto), 1);
-        this.precoTotal = 0;
-        this.realizaCalculo();
-
+    this.listaDeMercadorias.splice(this.listaDeMercadorias.indexOf(produto), 1);
+    this.precoTotal = 0;
+    this.realizaCalculo();
   }
 
-  atualizarProduto(produto, itemSli: ItemSliding){
-
+  atualizarProduto(produto, itemSli: ItemSliding) {
     this.alertProdutoUpdate(produto, itemSli);
   }
 
@@ -190,4 +233,32 @@ export class AmbienteComprasPage implements OnInit {
     }
     this.Total = this.precoTotal.toFixed(2);
   }
+
+  produtoFinalizado(lista) {
+    this.alertProdutoFinalizado(lista);
+  }
+
+  salvarCompras(listaRecebida, nomeDaCompra)   {
+
+    let listaString = listaRecebida;
+    let listaJson = JSON.stringify(listaString);
+
+    var listaCodificada = window.btoa(listaJson);
+    console.log(listaCodificada);
+    console.log(nomeDaCompra);
+
+    var Hist = [{nome: nomeDaCompra, hist: listaCodificada }]
+
+    this.enviandoParaBanco(Hist);
+  }
+
+  enviandoParaBanco(arrayHistorico){
+      console.log(arrayHistorico);
+      this._historicoComprasService.setHistorico(arrayHistorico)
+        .subscribe( data =>   {
+            console.log(data + ' Esse objeto foi adicionado');
+        });
+
+  }
+
 }

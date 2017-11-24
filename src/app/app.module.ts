@@ -23,6 +23,7 @@ import { LoginPage } from '../pages/login/login';
 import { HistoricoPage } from '../pages/historico/historico';
 import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-service';
 import { ListagemProdutosServiceProvider } from '../providers/listagem-produtos-service/listagem-produtos-service';
+import { ComprasHistoricoServiceProvider } from '../providers/compras-historico-service/compras-historico-service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ListagemProdutosServiceProvider } from '../providers/listagem-produtos-
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UsuarioServiceProvider,
-    ListagemProdutosServiceProvider
+    ListagemProdutosServiceProvider,
+    ComprasHistoricoServiceProvider
     ]
 })
 export class AppModule {}

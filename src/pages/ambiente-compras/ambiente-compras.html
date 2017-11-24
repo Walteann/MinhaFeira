@@ -70,6 +70,15 @@
 
     </ion-list>
 
-    <!-- </ion-card> -->
 
 </ion-content>
+<ion-footer float-right>
+    <ion-toolbar >
+        <!-- <ion-title>Footer</ion-title> -->
+        <button ion-button round color="secondary" *ngIf="listaDeMercadorias.length > 0" (click)="produtoFinalizado(listaDeMercadorias)">
+            Finalizar Compras
+        </button>
+    </ion-toolbar>
+</ion-footer>
+
+

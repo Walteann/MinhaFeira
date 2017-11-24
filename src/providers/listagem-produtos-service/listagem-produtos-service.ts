@@ -41,5 +41,5 @@ export class ListagemProdutosServiceProvider {
 	private log(messagem: string)	{
 		console.log(messagem);
 	}
-	
+
 }
