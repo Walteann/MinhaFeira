@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { HistoricoPage } from '../pages/historico/historico';
 import { LoginPage } from '../pages/login/login';
 
+
 @Component({
   templateUrl: 'app.html'
 })

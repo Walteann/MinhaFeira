@@ -10,6 +10,11 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item>Ola Historico Page OK Fucionou</ion-item>
+    <ion-item>Historico de Compras</ion-item>
+  </ion-list>
+  <ion-list>
+    <button ion-item *ngFor="let hist of historicoHash" (click)="showHistorico(hist)" >
+      {{hist.nomeacao_da_compra}}
+    </button>
   </ion-list>
 </ion-content>

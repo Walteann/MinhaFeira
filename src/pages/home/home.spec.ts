@@ -14,6 +14,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from './home';
 import { MyApp } from '../../app/app.component';
 
+import {} from 'jasmine';
 
 describe('Teste da Pagina Inicial ', () =>  {
 

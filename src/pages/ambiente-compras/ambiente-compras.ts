@@ -6,6 +6,8 @@ import {
     AlertController,
     ItemSliding
 } from "ionic-angular";
+
+import { HomePage } from '../home/home';
 import { ListaMercadoriaModels } from "../../modals/lista-mercadoria.models";
 import { IHistoricoComprasModels } from './../../modals/historico-compras.models';
 
@@ -257,6 +259,7 @@ export class AmbienteComprasPage implements OnInit {
       this._historicoComprasService.setHistorico(arrayHistorico)
         .subscribe( data =>   {
             console.log(data + ' Esse objeto foi adicionado');
+            this.navCtrl.push(HomePage);
         });
 
   }
