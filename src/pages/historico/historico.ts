@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 
 import { IHistoricoComprasModels } from '../../modals/historico-compras.models';
 
@@ -16,7 +16,10 @@ export class HistoricoPage implements OnInit {
 
 
 
-	constructor(public navCtrl: NavController, private _historicoService: ComprasHistoricoServiceProvider) {
+	constructor(public navCtrl: NavController, 
+		private _historicoService: ComprasHistoricoServiceProvider,
+		private _modal: ModalController
+	) {
 
 
 	}
@@ -40,8 +43,13 @@ export class HistoricoPage implements OnInit {
 	showHistorico(historicoHasheado)	{
 
 		var historicoString = atob(historicoHasheado.historico);
-		console.log(historicoHasheado.historico);
-		console.log(historicoString);
+		var historicoObjeto = JSON.parse(historicoString);
+		const meuModal = this._modal.create('HistoricoModalPage', { objeto: historicoObjeto});
+
+		meuModal.present();
+
+		// console.log(historicoHasheado.historico);
+		// console.log(historicoString);
 
 	}
 

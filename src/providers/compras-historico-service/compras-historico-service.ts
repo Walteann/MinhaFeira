@@ -16,7 +16,8 @@ const httpOptions = {
 @Injectable()
 export class ComprasHistoricoServiceProvider {
 
-    private historicoUrl = 'http://localhost:3000/historico-compras';
+    // private historicoUrl = 'http://192.168.43.52:3000/historico-compras';  MUDA QDO FOR PRA APRESENTACAO
+    private historicoUrl = 'http://192.168.0.104:3000/historico-compras';
 
 
     constructor(private _http: HttpClient) {}

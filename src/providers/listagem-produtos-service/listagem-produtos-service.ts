@@ -11,7 +11,8 @@ import { ProdutoModels } from '../../modals/produtos.models';
 @Injectable()
 export class ListagemProdutosServiceProvider {
 
-	private mercadoriasUrl = 'http://localhost:3000/mercadorias';
+	// private mercadoriasUrl = 'http://192.168.43.52:3000/mercadorias'; MUDA QDO FOR APRESENTAR
+	private mercadoriasUrl = 'http://192.168.0.104:3000/mercadorias';
 
 	constructor(private _http: HttpClient)	{}
 
